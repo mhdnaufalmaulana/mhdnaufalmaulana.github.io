@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Naufal Maulana — Portfolio</title>
+<meta name="description" content="Portfolio profesional di bidang IT, Network, dan IoT.">
+
+<style>
+  /* ====== RESET & VARIABLES ====== */
+  :root{
+    --bg:#0b0f14;
+    --bg-soft:#11161d;
+    --card:#151b23;
+    --border:#232b35;
+    --text:#e9edf2;
+    --text-dim:#9aa6b2;
+    --accent:#3ddc97;
+    --accent-soft:rgba(61,220,151,.12);
+    --radius:14px;
+    --maxw:1000px;
+  }
+  [data-theme="light"]{
+    --bg:#f6f8fa;
+    --bg-soft:#ffffff;
+    --card:#ffffff;
+    --border:#e3e8ee;
+    --text:#15202b;
+    --text-dim:#5b6773;
+    --accent:#0fa968;
+    --accent-soft:rgba(15,169,104,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    line-height:1.6;
+    transition:background .3s ease, color .3s ease;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  section{padding:90px 20px;max-width:var(--maxw);margin:0 auto;}
+  .eyebrow{
+    color:var(--accent);
+    font-size:13px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    font-weight:600;
+    margin-bottom:10px;
+    display:block;
+  }
+  h2{font-size:28px;margin-bottom:30px;}
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:24px;
+  }
+
+  /* ====== NAVBAR ====== */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(11,15,20,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  [data-theme="light"] header{background:rgba(246,248,250,.85);}
+  nav{
+    max-width:var(--maxw);margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 20px;
+  }
+  .logo{font-weight:700;font-size:18px;}
+  .logo span{color:var(--accent);}
+  .nav-links{display:flex;gap:24px;list-style:none;}
+  .nav-links a{font-size:14px;color:var(--text-dim);transition:color .2s;}
+  .nav-links a:hover{color:var(--accent);}
+  .nav-right{display:flex;align-items:center;gap:14px;}
+  .theme-btn{
+    background:var(--card);border:1px solid var(--border);
+    color:var(--text);border-radius:8px;width:36px;height:36px;
+    cursor:pointer;font-size:16px;
+  }
+  .menu-btn{display:none;background:none;border:none;color:var(--text);font-size:22px;cursor:pointer;}
+
+  @media(max-width:720px){
+    .nav-links{
+      position:fixed;top:64px;left:0;right:0;
+      background:var(--bg-soft);border-bottom:1px solid var(--border);
+      flex-direction:column;padding:20px;gap:16px;
+      transform:translateY(-150%);transition:transform .25s ease;
+    }
+    .nav-links.open{transform:translateY(0);}
+    .menu-btn{display:block;}
+  }
+
+  /* ====== HERO ====== */
+  .hero{padding-top:70px;padding-bottom:70px;}
+  .badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--accent-soft);color:var(--accent);
+    padding:6px 14px;border-radius:999px;font-size:13px;font-weight:600;
+    margin-bottom:20px;
+  }
+  .badge::before{content:"●";font-size:10px;}
+  .hero h1{font-size:48px;line-height:1.15;margin-bottom:18px;}
+  .hero h1 em{font-style:normal;color:var(--accent);}
+  .hero p.lead{color:var(--text-dim);max-width:600px;margin-bottom:30px;font-size:16px;}
+  .tag-list{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px;}
+  .tag{
+    background:var(--card);border:1px solid var(--border);
+    padding:6px 12px;border-radius:8px;font-size:13px;color:var(--text-dim);
+  }
+  .btn-row{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:40px;}
+  .btn{
+    padding:12px 22px;border-radius:10px;font-weight:600;font-size:14px;
+    border:1px solid var(--border);cursor:pointer;transition:.2s;
+  }
+  .btn-primary{background:var(--accent);color:#06140d;border-color:var(--accent);}
+  .btn-primary:hover{opacity:.88;}
+  .btn-ghost{background:transparent;color:var(--text);}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+  .stats{display:flex;flex-wrap:wrap;gap:34px;}
+  .stat b{font-size:24px;color:var(--accent);display:block;}
+  .stat span{font-size:13px;color:var(--text-dim);}
+
+  /* ====== ABOUT ====== */
+  .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:30px;}
+  @media(max-width:760px){.about-grid{grid-template-columns:1fr;}}
+  .about-grid p{color:var(--text-dim);margin-bottom:14px;}
+  .about-grid p b{color:var(--text);}
+  .info-list{display:flex;flex-direction:column;gap:14px;}
+  .info-row{display:flex;justify-content:space-between;font-size:14px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+  .info-row span:first-child{color:var(--text-dim);}
+
+  /* ====== TIMELINE (Experience/Education) ====== */
+  .timeline{display:flex;flex-direction:column;gap:22px;}
+  .tl-item{position:relative;padding-left:24px;border-left:2px solid var(--border);}
+  .tl-item::before{
+    content:"";position:absolute;left:-7px;top:4px;
+    width:12px;height:12px;border-radius:50%;
+    background:var(--accent);
+  }
+  .tl-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin-bottom:4px;}
+  .tl-head h3{font-size:17px;}
+  .tl-head .date{color:var(--accent);font-size:13px;font-weight:600;}
+  .tl-org{color:var(--text-dim);font-size:14px;margin-bottom:10px;}
+  .tl-item ul{padding-left:18px;color:var(--text-dim);font-size:14px;}
+  .tl-item li{margin-bottom:6px;}
+
+  /* ====== SKILLS ====== */
+  .skill-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+  @media(max-width:700px){.skill-groups{grid-template-columns:1fr;}}
+  .skill-group h4{font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:16px;}
+  .skill-row{margin-bottom:14px;}
+  .skill-row .label{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px;}
+  .bar{height:6px;background:var(--border);border-radius:99px;overflow:hidden;}
+  .bar i{display:block;height:100%;background:var(--accent);border-radius:99px;}
+
+  /* ====== PROJECTS / RESEARCH ====== */
+  .project-card{margin-bottom:20px;}
+  .project-card h3{font-size:18px;margin-bottom:8px;}
+  .project-card p{color:var(--text-dim);font-size:14px;margin-bottom:12px;}
+  .result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin-top:16px;}
+  .result-box{background:var(--bg-soft);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center;}
+  .result-box b{display:block;font-size:20px;color:var(--accent);}
+  .result-box span{font-size:12px;color:var(--text-dim);}
+
+  /* ====== CERTIFICATES ====== */
+  .cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;}
+  .cert-card{display:flex;gap:14px;}
+  .cert-icon{font-size:26px;}
+  .cert-card h4{font-size:15px;margin-bottom:4px;}
+  .cert-card p{font-size:13px;color:var(--text-dim);}
+  .cert-date{font-size:12px;color:var(--accent);margin-bottom:6px;display:block;}
+
+  /* ====== CONTACT ====== */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;}
+  @media(max-width:760px){.contact-grid{grid-template-columns:1fr;}}
+  .contact-links{display:flex;flex-direction:column;gap:12px;}
+  .contact-links a{
+    display:flex;align-items:center;gap:10px;
+    background:var(--card);border:1px solid var(--border);
+    padding:12px 16px;border-radius:10px;font-size:14px;transition:.2s;
+  }
+  .contact-links a:hover{border-color:var(--accent);color:var(--accent);}
+  form{display:flex;flex-direction:column;gap:12px;}
+  form input, form textarea{
+    background:var(--bg-soft);border:1px solid var(--border);
+    color:var(--text);padding:12px 14px;border-radius:10px;
+    font-family:inherit;font-size:14px;
+  }
+  form textarea{min-height:120px;resize:vertical;}
+  form button{align-self:flex-start;}
+
+  footer{
+    border-top:1px solid var(--border);
+    padding:26px 20px;text-align:center;
+    font-size:13px;color:var(--text-dim);
+  }
+
+  .back-top{
+    position:fixed;right:20px;bottom:20px;
+    width:42px;height:42px;border-radius:50%;
+    background:var(--accent);color:#06140d;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;font-size:18px;border:none;
+    box-shadow:0 4px 14px rgba(0,0,0,.25);
+    opacity:0;pointer-events:none;transition:.25s;
+  }
+  .back-top.show{opacity:1;pointer-events:auto;}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Nau<span>fal</span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-btn" id="themeBtn" title="Ganti tema">🌙</button>
+      <button class="menu-btn" id="menuBtn">☰</button>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <span class="badge">Open to Opportunities</span>
+  <p class="eyebrow">Computer Engineering Graduate · IoT &amp; Embedded Systems · Network Infrastructure</p>
+  <h1>Nama <em>Anda.</em></h1>
+  <p class="lead">
+    Lulusan Diploma III Teknik Komputer dari [Nama Universitas] dengan IPK [3.xx]/4.00.
+    Pembelajar cepat, adaptif, dan kolaboratif dengan kemampuan problem-solving yang kuat,
+    serta motivasi untuk terus mengembangkan kemampuan teknis di bidang IoT dan infrastruktur jaringan.
+  </p>
+  <div class="btn-row">
+    <a href="#contact" class="btn btn-primary">Contact Me</a>
+    <a href="CV_Nama_Anda.pdf" class="btn btn-ghost" target="_blank">View CV</a>
+    <a href="#experience" class="btn btn-ghost">View Experience →</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>3.xx</b><span>GPA / 4.00</span></div>
+    <div class="stat"><b>3×</b><span>Internships &amp; Work Experience</span></div>
+    <div class="stat"><b>1st</b><span>Competition Winner</span></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <span class="eyebrow">01 — About</span>
+  <h2 class="reveal">About Me</h2>
+  <div class="about-grid">
+    <div class="card reveal">
+      <p>Saya <b>Nama Anda</b>, lulusan Diploma III Teknik Komputer dari [Universitas] dengan IPK <b>3.xx/4.00</b>. Saya memiliki minat kuat di bidang Teknologi Informasi, jaringan, troubleshooting, dan pengembangan IoT.</p>
+      <p>Familiar dengan <b>pemrograman mikrokontroler</b>, perawatan komputer, instalasi jaringan, dan integrasi sistem yang saya peroleh dari pengalaman akademik dan magang.</p>
+      <p>Saya seorang <b>fast learner</b>, adaptif, dan kolaboratif dengan kemampuan problem-solving yang baik serta motivasi tinggi untuk terus berkembang.</p>
+      <div class="tag-list">
+        <span class="tag">IoT Development</span>
+        <span class="tag">Embedded Systems</span>
+        <span class="tag">Network Infrastructure</span>
+        <span class="tag">CCTV Systems</span>
+        <span class="tag">Fiber Optic</span>
+        <span class="tag">Fuzzy Logic</span>
+      </div>
+    </div>
+    <div class="card reveal">
+      <h4 style="margin-bottom:16px;color:var(--accent);font-size:13px;letter-spacing:1px;text-transform:uppercase;">// Info</h4>
+      <div class="info-list">
+        <div class="info-row"><span>Name</span><span>Nama Anda</span></div>
+        <div class="info-row"><span>Location</span><span>Kota, Indonesia 🇮🇩</span></div>
+        <div class="info-row"><span>Degree</span><span>A.Md.Kom. — Univ</span></div>
+        <div class="info-row"><span>GPA</span><span>3.xx / 4.00</span></div>
+        <div class="info-row"><span>Phone</span><span>+62 8xx-xxxx-xxxx</span></div>
+        <div class="info-row"><span>Mobility</span><span>Anywhere in Indonesia ✈</span></div>
+        <div class="info-row"><span>Status</span><span>● Open to Work</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <span class="eyebrow">02 — Experience</span>
+  <h2 class="reveal">Professional Experience</h2>
+  <div class="timeline reveal">
+    <div class="tl-item">
+      <div class="tl-head"><h3>Field Network Technician</h3><span class="date">Bulan 2025 – Bulan 2025</span></div>
+      <div class="tl-org">Nama Perusahaan · 📍 Kota, Provinsi</div>
+      <ul>
+        <li>Instalasi infrastruktur jaringan LAN end-to-end di berbagai lokasi klien, termasuk penarikan kabel terstruktur, terminasi &amp; crimping RJ45, setup patch panel, dan pengujian konektivitas.</li>
+        <li>Instalasi kabel Fiber Optic (FO) dengan routing, persiapan splicing, dan terminasi yang tepat untuk konektivitas cepat dan low-loss.</li>
+        <li>Mengerjakan proyek instalasi CCTV full-cycle: pemasangan &amp; alignment kamera, routing kabel, konfigurasi DVR/NVR, dan setup remote access.</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-head"><h3>Internship — [Posisi]</h3><span class="date">Bulan 2024 – Bulan 2024</span></div>
+      <div class="tl-org">Nama Perusahaan · 📍 Kota, Provinsi</div>
+      <ul>
+        <li>Deskripsikan tanggung jawab dan pencapaian Anda di sini.</li>
+        <li>Tambahkan poin kedua jika ada.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <span class="eyebrow">03 — Skills</span>
+  <h2 class="reveal">Technical Skills</h2>
+  <div class="skill-groups reveal">
+    <div class="skill-group">
+      <h4>// IoT &amp; Embedded</h4>
+      <div class="skill-row"><div class="label"><span>NodeMCU ESP8266</span><span>90%</span></div><div class="bar"><i style="width:90%"></i></div></div>
+      <div class="skill-row"><div class="label"><span>Arduino</span><span>85%</span></div><div class="bar"><i style="width:85%"></i></div></div>
+      <div class="skill-row"><div class="label"><span>Sensor Integration</span><span>85%</span></div><div class="bar"><i style="width:85%"></i></div></div>
+    </div>
+    <div class="skill-group">
+      <h4>// Network &amp; Infrastructure</h4>
+      <div class="skill-row"><div class="label"><span>LAN / Structured Cabling</span><span>90%</span></div><div class="bar"><i style="width:90%"></i></div></div>
+      <div class="skill-row"><div class="label"><span>Fiber Optic Installation</span><span>80%</span></div><div class="bar"><i style="width:80%"></i></div></div>
+      <div class="skill-row"><div class="label"><span>CCTV (DVR/NVR)</span><span>85%</span></div><div class="bar"><i style="width:85%"></i></div></div>
+    </div>
+    <div class="skill-group">
+      <h4>// Software &amp; Tools</h4>
+      <div class="skill-row"><div class="label"><span>Troubleshooting</span><span>88%</span></div><div class="bar"><i style="width:88%"></i></div></div>
+      <div class="skill-row"><div class="label"><span>MS Office</span><span>80%</span></div><div class="bar"><i style="width:80%"></i></div></div>
+    </div>
+    <div class="skill-group">
+      <h4>// Web Development</h4>
+      <div class="skill-row"><div class="label"><span>HTML5</span><span>95%</span></div><div class="bar"><i style="width:95%"></i></div></div>
+      <div class="skill-row"><div class="label"><span>CSS3</span><span>90%</span></div><div class="bar"><i style="width:90%"></i></div></div>
+      <div class="skill-row"><div class="label"><span>JavaScript</span><span>88%</span></div><div class="bar"><i style="width:88%"></i></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH / PROJECT -->
+<section id="research">
+  <span class="eyebrow">04 — Research</span>
+  <h2 class="reveal">Tugas Akhir / Proyek Riset</h2>
+  <div class="card project-card reveal">
+    <h3>Judul Tugas Akhir / Proyek Anda</h3>
+    <p>Tuliskan ringkasan singkat tentang proyek riset atau tugas akhir Anda di sini — latar belakang, tujuan, dan teknologi yang digunakan.</p>
+    <div class="result-grid">
+      <div class="result-box"><b>0%</b><span>Error rate kondisi A</span></div>
+      <div class="result-box"><b>0.5%</b><span>Error rate kondisi B</span></div>
+      <div class="result-box"><b>162</b><span>Hasil pengujian C</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <span class="eyebrow">05 — Certifications</span>
+  <h2 class="reveal">Awards &amp; Certificates</h2>
+  <div class="cert-grid reveal">
+    <div class="card cert-card">
+      <div class="cert-icon">🏆</div>
+      <div>
+        <span class="cert-date">Bulan Tahun</span>
+        <h4>Nama Penghargaan</h4>
+        <p>Diselenggarakan oleh: Nama Organisasi</p>
+      </div>
+    </div>
+    <div class="card cert-card">
+      <div class="cert-icon">📜</div>
+      <div>
+        <span class="cert-date">Bulan Tahun</span>
+        <h4>Nama Sertifikat</h4>
+        <p>Diterbitkan oleh: Nama Lembaga</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <span class="eyebrow">06 — Contact</span>
+  <h2 class="reveal">Let's Collaborate</h2>
+  <p style="color:var(--text-dim);margin-bottom:30px;max-width:600px;">
+    Mencari seseorang dengan keahlian di IoT development, infrastruktur jaringan, atau IT problem-solving secara umum?
+    Saya terbuka untuk peluang baru.
+  </p>
+  <div class="contact-grid reveal">
+    <div class="contact-links">
+      <a href="mailto:mnaufalm02@gmail.com">✉ mnaufalm02@gmail.com</a>
+      <a href="https://wa.me/6282178093396">☎ +62 821-7809-3396</a>
+      <a href="https://www.linkedin.com/in/muhammad-naufal-maulana-750b5330b" target="_blank">◈ linkedin.com/in/Muhammad Naufal Maulana</a>
+      <a href="#">⌥ Palembang, Sumatera Selatan, Indonesia</a>
+    </div>
+    <form onsubmit="event.preventDefault(); alert('Form ini contoh statis. Hubungkan ke layanan seperti Formspree agar berfungsi.');">
+      <input type="text" placeholder="Name" required>
+      <input type="email" placeholder="Email" required>
+      <textarea placeholder="Message" required></textarea>
+      <button type="submit" class="btn btn-primary">Send Message →</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> Muhammad Naufal Maulana. All rights reserved. Kota, Indonesia 🇮🇩
+</footer>
+
+<button class="back-top" id="backTop">↑</button>
+
+<script>
+  // Tahun otomatis di footer
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Toggle menu mobile
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click', ()=> navLinks.classList.remove('open'));
+  });
+
+  // Dark/Light theme toggle (tersimpan di memori sesi saja)
+  const themeBtn = document.getElementById('themeBtn');
+  let isLight = false;
+  themeBtn.addEventListener('click', () => {
+    isLight = !isLight;
+    document.documentElement.setAttribute('data-theme', isLight ? 'light' : 'dark');
+    themeBtn.textContent = isLight ? '☀️' : '🌙';
+  });
+
+  // Tombol back-to-top muncul saat scroll
+  const backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', () => {
+    backTop.classList.toggle('show', window.scrollY > 400);
+  });
+  backTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+  // Reveal animasi saat elemen masuk viewport
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>
